@@ -95,21 +95,23 @@ const selectYears = (props: selectYearsProps) => {
 
     const actionsWidth = props.selected.length > 0 ? 35 : 10;
 
+    const labelId = props.id + '-years-label';
+
     return <div ref={mainDivRef}
         className={mainClass}
         id={props.id}
         tabIndex={0}
         onKeyDown={onKeyDown}
         role='combobox'
-        aria-labelledby='years-label'
+        aria-labelledby={labelId}
         aria-controls={dropdownId}
         aria-expanded={isOpened}>
         {props.selected.length > 0
             ? <>
-                <label className='label' id='years-label'>{title}</label>
+                <label className='label' id={labelId}>{title}</label>
                 <span>{props.selected.join()}</span>
             </>
-            : <span className='title' id='years-label'>{title}</span>}
+            : <span className='title' id={labelId}>{title}</span>}
         <span className='actions' style={{ width: actionsWidth }}>
             {props.selected.length > 0 && <span onClick={handleClear}>
                 {CancelIcon}
