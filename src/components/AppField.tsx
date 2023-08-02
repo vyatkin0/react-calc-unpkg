@@ -1,7 +1,7 @@
 import * as React from 'react';
 import CancelIcon from './CancelIcon';
 
-interface RatioFieldProps {
+interface AppFieldProps {
     id?: string;
     value?: string;
     placeholder?: string;
@@ -9,7 +9,7 @@ interface RatioFieldProps {
     onChange?: (v: string) => void;
 }
 
-const RatioField = (props: RatioFieldProps) => {
+const AppField = (props: AppFieldProps) => {
     function handleClear(e: React.MouseEvent) {
         props.onChange?.('');
     }
@@ -25,7 +25,6 @@ const RatioField = (props: RatioFieldProps) => {
     };
 
     return <div className='app-field' onClick={onClick}>
-        {props.value && <label htmlFor={props.id} className='label'>{props.title}</label>}
         <input
             id={props.id}
             name={props.id}
@@ -34,9 +33,10 @@ const RatioField = (props: RatioFieldProps) => {
             value={props.value}
             placeholder={props.placeholder}
         />
+        {props.value && <label htmlFor={props.id} className='label'>{props.title}</label>}
         <span style={spanStyle} className='actions' onClick={props.value ? handleClear : undefined}>
             {CancelIcon}
         </span>
     </div>;
 }
-export default RatioField;
+export default AppField;
