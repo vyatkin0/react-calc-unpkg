@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="./css/App.css" />
+  <link rel="stylesheet" href="./css/AppButton.css" />
+  <link rel="stylesheet" href="./css/AppCheckBox.css" />
+  <link rel="stylesheet" href="./css/AppField.css" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <link rel="stylesheet" href="./css/Message.css" />
+  <link rel="stylesheet" href="./css/SelectYears.css" />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="js/require.js"></script>
+  <script>
+    require.config({
+      baseUrl: "js",
+      paths: {
+        'react': 'modules/react.development',
+        'react-dom/client': 'modules/react-dom.development',
+      },
+    });
+    require(["index"], function (index) { });
+  </script>
+</body>
+
+</html>

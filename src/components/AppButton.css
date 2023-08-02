@@ -1,0 +1,30 @@
+.app-button {
+    padding: 10px;
+    border: var(--border-inactive);
+    border-radius: var(--border-radius-small);
+    background: var(--background-button);
+    color: var(--color-shared-field-text);
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.app-button:not(:disabled):focus {
+    border: var(--border-focus);
+    outline: var(--border-focus);
+    outline-offset: 0px;
+}
+
+.app-button:not(:disabled):hover:not(:focus) {
+    border: var(--border-hover);
+}
+
+.app-button:disabled {
+    opacity: 0.5;
+}
+
+.app-button:not(:disabled):active {
+    background: var(--background-button-active);
+}
