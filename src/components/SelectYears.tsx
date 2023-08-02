@@ -37,7 +37,7 @@ const selectYears = (props: selectYearsProps) => {
         <div className='dropdown' id={dropdownId} role='listbox' aria-label='Years'>
             {props.years.map((y) => {
                 const selected = props.selected.includes(y);
-                let className = selected ? 'checkbox selected' : 'checkbox';
+                const className = selected ? 'checkbox selected' : 'checkbox';
                 return <button key={y} role='option' aria-selected={selected}
                     className='item' onClick={() => handleSelect(y)}
                 >
