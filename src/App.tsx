@@ -118,7 +118,7 @@ function start(state: FormState) {
         });
     });
 
-    return postForm(formData, 'api/start');
+    return postForm(formData, '/calc/api/start');
 }
 
 interface ValueData {
