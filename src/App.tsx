@@ -206,7 +206,7 @@ export default () => {
                 payload: { type: 'error', text, title }
             });
         }
-    }, [dispatch]);
+    }, [formState, dispatch]);
 
     const onMessageKeyDown = React.useCallback((event: React.KeyboardEvent) => {
         switch (event.key) {
