@@ -23,7 +23,9 @@
     display: flex;
     column-gap: 25px;
     height: 75px;
-    margin: 10px auto;
+    margin: 5px auto;
+    padding: 5px;
+    overflow-x: auto;
 }
 
 .items-column2 {
