@@ -1,40 +1,42 @@
 import * as React from 'react';
-import CancelIcon from './CancelIcon';
+import CancelIcon from './CancelIcon.js';
 
 const title = 'Select years';
 
-interface selectYearsProps {
+interface SelectYearsProps {
     id?: string;
     selected: number[];
     years: number[];
     onChanged: (years: number[]) => void;
 }
 
-const selectYears = (props: selectYearsProps) => {
+const SelectYears = (props: SelectYearsProps) => {
     const [isOpened, setOpened] = React.useState(false);
 
     const mainDivRef = React.useRef<HTMLDivElement>(null);
 
-    const handleSelect = (year: number) => {
-        const newSelected = props.selected.filter((y) => y !== year);
-
-        if (newSelected.length === props.selected.length) {
-            if (props.selected.length > 2) {
-                newSelected.shift();
-            }
-
-            newSelected.push(year);
-        }
-
-        newSelected.sort();
-
-        props.onChanged(newSelected);
-    };
-
     const dropdownId = props.id + '-list';
 
-    const dropdownList = React.useMemo(() =>
-        <div className='dropdown' id={dropdownId} role='listbox' aria-label='Years'>
+    const onChanged = props.onChanged;
+
+    const dropdownList = React.useMemo(() => {
+        const handleSelect = (year: number) => {
+            const newSelected = props.selected.filter((y) => y !== year);
+
+            if (newSelected.length === props.selected.length) {
+                if (props.selected.length > 2) {
+                    newSelected.shift();
+                }
+
+                newSelected.push(year);
+            }
+
+            newSelected.sort();
+
+            onChanged(newSelected);
+        };
+
+        return <div className='dropdown' id={dropdownId} role='listbox' aria-label='Years'>
             {props.years.map((y) => {
                 const selected = props.selected.includes(y);
                 const className = selected ? 'checkbox selected' : 'checkbox';
@@ -45,14 +47,15 @@ const selectYears = (props: selectYearsProps) => {
                     <span className={className}></span>
                 </button>
             })}
-        </div>, [props.years, props.selected, handleSelect]);
+        </div>;
+    }, [props.years, props.selected, dropdownId, onChanged]);
 
     function handleClear() {
         document.removeEventListener('click', handleOutsideClick, true);
 
         const newSelected: number[] = [];
         setOpened(false);
-        props.onChanged(newSelected);
+        onChanged(newSelected);
     }
 
     function handleUp() {
@@ -124,4 +127,4 @@ const selectYears = (props: selectYearsProps) => {
     </div>;
 };
 
-export default selectYears;
+export default SelectYears;

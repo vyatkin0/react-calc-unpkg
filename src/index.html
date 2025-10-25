@@ -16,17 +16,22 @@
 
 <body>
   <div id="root"></div>
-  <script src="js/require.js"></script>
-  <script>
-    require.config({
-      baseUrl: "js",
-      paths: {
-        'react': 'modules/react.development',
-        'react-dom/client': 'modules/react-dom.development',
-      },
-    });
-    require(["index"], function (index) { });
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@19?dev",
+        "react-dom/client": "https://esm.sh/react-dom@19/client?dev"
+      }
+    }
   </script>
+  <script type="module" src="./js/components/AppButton.js"></script>
+  <script type="module" src="./js/components/AppCheckBox.js"></script>
+  <script type="module" src="./js/components/AppField.js"></script>
+  <script type="module" src="./js/components/CancelIcon.js"></script>
+  <script type="module" src="./js/components/Message.js"></script>
+  <script type="module" src="./js/components/SelectYears.js"></script>
+  <script type="module" src="./js/App.js"></script>
+  <script type="module" src="./js/index.js"></script>
 </body>
 
 </html>

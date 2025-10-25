@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Message, { MessageProps } from './components/Message';
-import AppField from './components/AppField';
-import AppButton from './components/AppButton';
-import SelectYears from './components/SelectYears';
-import AppCheckBox from './components/AppCheckBox';
+import Message, { MessageProps } from './components/Message.js';
+import AppField from './components/AppField.js';
+import AppButton from './components/AppButton.js';
+import SelectYears from './components/SelectYears.js';
+import AppCheckBox from './components/AppCheckBox.js';
 
 interface FormState {
     multiplier?: string;
@@ -198,8 +198,8 @@ export default () => {
                 payload: { type: 'info', text: r, title }
             });
         }
-        catch (e: any) {
-            const text = e instanceof Error ? e.message : e.toString();
+        catch (e) {
+            const text = e instanceof Error ? e.message : (e as {toString: ()=>string}).toString?.();
 
             dispatch({
                 type: 'set_message',

@@ -7,7 +7,7 @@ interface AppCheckBoxProps {
 }
 
 const AppCheckBox = (props: React.PropsWithChildren<AppCheckBoxProps>) => <div className='app-check-box'>
-    <input type="checkbox" id={props.id} name={props.id} checked={props.checked} onChange={(e) => props.onChange?.(!props.checked)} />
+    <input type="checkbox" id={props.id} name={props.id} checked={props.checked} onChange={() => props.onChange?.(!props.checked)} />
     {props.children && <label htmlFor={props.id}>{props.children}</label>}
 </div>;
 
